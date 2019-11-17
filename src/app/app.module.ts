@@ -15,13 +15,14 @@ import { from } from 'rxjs';
     AppComponent,
     AddPersonComponent,
     EditPersonComponent,
-    PersonsListComponent,
-    AngularMaterialModule
-  ],
+    PersonsListComponent
+    ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    AngularMaterialModule
+
   ],
   providers: [],
   bootstrap: [AppComponent],
