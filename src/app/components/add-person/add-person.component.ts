@@ -6,8 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./add-person.component.css']
 })
 export class AddPersonComponent implements OnInit {
-
-  constructor() { }
+  
+ 
+  constructor() {
+    
+   }
 
   ngOnInit() {
   }

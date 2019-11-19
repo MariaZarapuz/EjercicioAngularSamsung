@@ -1,1 +1,56 @@
-<p>add-person works!</p>
+<div class="mat-display">
+<mat-form-field floatLabel ="auto">
+    <mat-label>Nombre</mat-label>
+    <input matInput required>
+</mat-form-field>
+</div>
+<div>
+<mat-form-field floatLabel ="auto">
+    <mat-label>Apellido</mat-label>
+    <input matInput required>
+</mat-form-field>
+</div>
+<mat-form-field floatLabel ="auto">
+    <mat-label>Edad</mat-label>
+    <input matInput required>
+</mat-form-field>
+<div>
+<mat-form-field floatLabel ="auto">
+    <mat-label>D.N.I</mat-label>
+    <input matInput required>
+</mat-form-field>
+</div>
+<div>
+<mat-form-field float="auto">
+    <mat-label>Fecha de Nacimiento</mat-label>
+    <input matInput required [matDatepicker]="myDatePicker">
+    <mat-datepicker-toggle [for]="myDatePicker" matSuffix></mat-datepicker-toggle>
+    <mat-datepicker #myDatePicker></mat-datepicker>
+</mat-form-field>
+</div>
+<div>
+<mat-form-field floatLabel ="auto">
+    <mat-label>Color Favorito</mat-label>
+    <input matInput required>
+</mat-form-field>
+</div>
+<div>
+<mat-form-field floatLabel ="auto">
+    <mat-label>Sexo</mat-label>
+    <mat-select>
+        <mat-option value="hombre">Hombre</mat-option>
+        <mat-option value="mujer">Mujer</mat-option>
+        <mat-option value="otro">Otro</mat-option>
+        <mat-option value="noEspecificado">No especificado</mat-option>
+    </mat-select>
+</mat-form-field>
+</div>
+<div>
+<mat-form-field floatLabel ="auto">
+        <mat-label>Notas</mat-label>
+        <textarea matInput></textarea>
+    </mat-form-field>
+</div>
+
+
+

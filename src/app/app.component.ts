@@ -10,6 +10,7 @@ export class AppComponent {
   opened= true;
   @ViewChild('sidenav',{static:true})sidenav:MatSidenav;
   title = 'ejercicioAngular';
+ 
 
 ngOnInit() {
   console.log(window.innerWidth)
