@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule,CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import{AngularMaterialModule} from './material.module';
-
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { AngularMaterialModule } from './material.module';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AddPersonComponent } from './components/add-person/add-person.component';
@@ -9,6 +9,10 @@ import { EditPersonComponent } from './components/edit-person/edit-person.compon
 import { PersonsListComponent } from './components/persons-list/persons-list.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { from } from 'rxjs';
+import { HttpClientModule } from '@angular/common/http';
+import { AgendaService } from './agenda.service'
+
+
 
 @NgModule({
   declarations: [
@@ -16,16 +20,20 @@ import { from } from 'rxjs';
     AddPersonComponent,
     EditPersonComponent,
     PersonsListComponent
-    ],
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    AngularMaterialModule
+    AngularMaterialModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule
+
 
   ],
-  providers: [],
+  providers: [AgendaService],
   bootstrap: [AppComponent],
-  schemas:[CUSTOM_ELEMENTS_SCHEMA]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }
