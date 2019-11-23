@@ -17,6 +17,8 @@ export class PersonsListComponent {
   }
   getPersona(): Persona[] {
     return this.agendaServicio.getPersonaList();
+
+
   }
 
 }

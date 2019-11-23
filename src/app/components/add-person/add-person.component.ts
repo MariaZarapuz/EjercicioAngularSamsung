@@ -30,8 +30,10 @@ export class AddPersonComponent implements OnInit {
   }
   onSubmit() {
     this.personGroup = this.person.value;
-    console.log(this.personGroup)
-    //this.agendaService.postData(this.personGroup)
+
+    this.agendaService.postData(this.personGroup);
+
+
   }
   ngOnInit() { }
 

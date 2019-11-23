@@ -7,15 +7,23 @@ import { Persona } from './persona';
 })
 export class AgendaService {
   private agenda: Persona[];
+  persona: {};
 
   constructor() {
     this.agenda = [];
-    this.agenda.push(new Persona('María', 'Sanchez Gomez', 30, '46863566-c', 'Verde', 'Mujer', "Mamá", '12/3/1989'));
-    this.agenda.push(new Persona('Juan', 'Lopez García', 32, '60594725-f', 'Rojo', 'Hombre', 'Gestor de seguros', '30/5/1987'));
+
   }
 
   public getPersonaList(): Persona[] {
     return this.agenda
+  }
+  public postData(data) {
+    this.createPerson(data)
+
+  }
+
+  createPerson(dataPerson) {
+    this.agenda.push(new Persona(dataPerson.nombre, dataPerson.apellidos, dataPerson.edad, dataPerson.dni, dataPerson.cumple, dataPerson.colorFavorito, dataPerson.sexo, dataPerson.notas));
   }
 
   // postData(data: Persona) {
