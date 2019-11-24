@@ -10,7 +10,8 @@ const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'persons-list' },
   { path: 'add-person', component: AddPersonComponent },
   { path: 'edit-person', component: EditPersonComponent },
-  { path: 'persons-list', component: PersonsListComponent }
+  { path: 'persons-list', component: PersonsListComponent },
+  { path: '**', redirectTo: 'persons-list' }
 
 ];
 
