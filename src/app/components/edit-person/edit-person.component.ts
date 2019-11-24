@@ -22,18 +22,24 @@ export class EditPersonComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.datosPersona = this.agendaServicio.getEdit();
-    this.editPersona = new FormGroup({
-      id: new FormControl(this.datosPersona['id']),
-      nombre: new FormControl(this.datosPersona['nombre'], [Validators.required, Validators.minLength(3)]),
-      apellido: new FormControl(this.datosPersona['apellidos'], [Validators.required, Validators.minLength(3)]),
-      edad: new FormControl(this.datosPersona['edad'], [Validators.required]),
-      dni: new FormControl(this.datosPersona['dni'], [Validators.required, Validators.maxLength(9)]),
-      cumple: new FormControl(this.datosPersona['cumple'], [Validators.required]),
-      colorFavorito: new FormControl(this.datosPersona['colorFavorito'], [Validators.required, Validators.minLength(3)]),
-      sexo: new FormControl(this.datosPersona['sexo'], [Validators.required]),
-      notas: new FormControl(this.datosPersona['notas'])
-    });
+    if (this.agendaServicio.agenda.length == 0) {
+      this.router.navigate(['add-person'])
+    } else {
+      this.datosPersona = this.agendaServicio.getEdit();
+      this.editPersona = new FormGroup({
+        id: new FormControl(this.datosPersona['id']),
+        nombre: new FormControl(this.datosPersona['nombre'], [Validators.required, Validators.minLength(3)]),
+        apellidos: new FormControl(this.datosPersona['apellidos'], [Validators.required, Validators.minLength(3)]),
+        edad: new FormControl(this.datosPersona['edad'], [Validators.required]),
+        dni: new FormControl(this.datosPersona['dni'], [Validators.required, Validators.maxLength(9)]),
+        cumple: new FormControl(this.datosPersona['cumple'], [Validators.required]),
+        colorFavorito: new FormControl(this.datosPersona['colorFavorito'], [Validators.required, Validators.minLength(3)]),
+        sexo: new FormControl(this.datosPersona['sexo'], [Validators.required]),
+        notas: new FormControl(this.datosPersona['notas'])
+      });
+    }
+
+
   }
 
   upDateSubmit() {

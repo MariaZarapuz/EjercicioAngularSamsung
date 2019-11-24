@@ -9,7 +9,7 @@ import { timeout } from 'q';
   providedIn: 'root'
 })
 export class AgendaService {
-  private agenda: Persona[];
+  public agenda: Persona[];
   persona: {};
   convertDate: string;
 

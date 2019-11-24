@@ -29,10 +29,10 @@ button {
   padding: 10px 15px;
   border: none;
   border-radius: 5px;
-  /* border: 1px solid black; */
   font-weight: 900;
   font-family: monospace;
   margin: 0 25px;
+  cursor: pointer;
 }
 
 .bodyTable {
@@ -40,7 +40,7 @@ button {
   border-right: 1px solid;
   padding: 15px 10px;
   min-width: 140px !important;
-  min-height: 50px;
+  height: 50px;
 }
 
 .bodyHeadNumber {

@@ -4,7 +4,7 @@
 </div>
 
 
-<table class="tabla">
+<table *ngIf="this.agendaServicio.agenda.length != 0" class="tabla">
   <thead>
     <tr>
       <th class="headTable" *ngFor="let head of arrayElements">{{head}}</th>
@@ -34,5 +34,6 @@
   </tbody>
 
 </table>
-<!-- <div class="mensaje">La lista esta vacia.Para añadir una persona pulse <a [routerLink]="['/add-person']">aquí</a>
-</div> -->
+<div *ngIf="this.agendaServicio.agenda.length == 0" class="mensaje">La lista esta vacia.Para añadir una persona pulse <a
+    [routerLink]="['/add-person']">aquí</a>
+</div>
