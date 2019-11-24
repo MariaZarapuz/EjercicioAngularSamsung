@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validators, PatternValidator } from '@angular/forms';
 import { DirectiveNormalizer } from '@angular/compiler';
 import { AgendaService } from '../../agenda.service'
+import { Persona } from 'src/app/persona';
+import { Router, ActivatedRoute } from '@angular/router';
+
+
 
 @Component({
   selector: 'app-add-person',
@@ -10,14 +14,15 @@ import { AgendaService } from '../../agenda.service'
 })
 export class AddPersonComponent implements OnInit {
   person: FormGroup;
-  personGroup: {};
+  personGroup: Persona;
+  convertDate: string;
 
 
 
-  constructor(private agendaService: AgendaService) {
+  constructor(private agendaService: AgendaService, public router: Router) {
     this.person = new FormGroup({
       nombre: new FormControl('', [Validators.required, Validators.minLength(3)]),
-      apellido: new FormControl('', [Validators.required, Validators.minLength(3)]),
+      apellidos: new FormControl('', [Validators.required, Validators.minLength(3)]),
       edad: new FormControl('', [Validators.required]),
       dni: new FormControl('', [Validators.required, Validators.maxLength(9)]),
       cumple: new FormControl('', [Validators.required]),
@@ -29,10 +34,11 @@ export class AddPersonComponent implements OnInit {
     });
   }
   onSubmit() {
-    this.personGroup = this.person.value;
-
-    this.agendaService.postData(this.personGroup);
-
+    if (this.person.valid) {
+      this.personGroup = this.person.value;
+      this.agendaService.postData(this.personGroup);
+      this.router.navigate(['persons-list'])
+    }
 
   }
   ngOnInit() { }
@@ -42,6 +48,7 @@ export class AddPersonComponent implements OnInit {
   public handleError = (controlName: string, errorName: string) => {
     return this.person.controls[controlName].hasError(errorName);
   }
+
 
 }
 

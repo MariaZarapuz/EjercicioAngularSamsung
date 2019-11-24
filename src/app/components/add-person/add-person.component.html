@@ -3,24 +3,24 @@
     <mat-form-field floatLabel="auto">
       <mat-label>Nombre</mat-label>
       <input matInput formControlName="nombre" type="text" required>
-      <mat-error *ngIf="handleError('apellido', 'required')">
+      <mat-error *ngIf="handleError('nombre', 'required')">
         El campo <strong>Nombre</strong> esta vacío
       </mat-error>
     </mat-form-field>
   </div>
   <div>
     <mat-form-field floatLabel="auto">
-      <mat-label>Apellido</mat-label>
-      <input matInput formControlName="apellido" type="text" required>
-      <mat-error *ngIf="handleError('apellido', 'required')">
-        El campo <strong>Apellido</strong> esta vacío
+      <mat-label>Apellidos</mat-label>
+      <input matInput formControlName="apellidos" type="text" required>
+      <mat-error *ngIf="handleError('apellidos', 'required')">
+        El campo <strong>Apellidos</strong> esta vacío
       </mat-error>
     </mat-form-field>
   </div>
   <mat-form-field floatLabel="auto">
     <mat-label>Edad</mat-label>
     <input max="125" min="0" matInput formControlName="edad" type="number" required>
-    <mat-error *ngIf="handleError('apellido', 'required')">
+    <mat-error *ngIf="handleError('edad', 'required')">
       El campo <strong>Edad</strong> esta vacío
     </mat-error>
   </mat-form-field>
@@ -28,7 +28,7 @@
     <mat-form-field floatLabel="auto">
       <mat-label>D.N.I</mat-label>
       <input matInput formControlName="dni" type="text" required>
-      <mat-error *ngIf="handleError('apellido', 'required')">
+      <mat-error *ngIf="handleError('dni', 'required')">
         El campo <strong>D.N.I</strong> esta vacío
       </mat-error>
     </mat-form-field>
@@ -39,7 +39,7 @@
       <input matInput formControlName="cumple" required [matDatepicker]="myDatePicker">
       <mat-datepicker-toggle [for]="myDatePicker" matSuffix></mat-datepicker-toggle>
       <mat-datepicker #myDatePicker></mat-datepicker>
-      <mat-error *ngIf="handleError('apellido', 'required')">
+      <mat-error *ngIf="handleError('cumple', 'required')">
         El campo <strong>Fecha de Nacimiento</strong> esta vacío
       </mat-error>
     </mat-form-field>
@@ -48,7 +48,7 @@
     <mat-form-field floatLabel="auto">
       <mat-label>Color Favorito</mat-label>
       <input matInput formControlName="colorFavorito" type="text" required>
-      <mat-error *ngIf="handleError('apellido', 'required')">
+      <mat-error *ngIf="handleError('colorFavorito', 'required')">
         El campo <strong>Color Favorito</strong> esta vacío
       </mat-error>
     </mat-form-field>
@@ -56,13 +56,13 @@
   <div>
     <mat-form-field floatLabel="auto">
       <mat-label>Sexo</mat-label>
-      <mat-select>
+      <mat-select formControlName="sexo" required>
         <mat-option value="hombre">Hombre</mat-option>
         <mat-option value="mujer">Mujer</mat-option>
         <mat-option value="otro">Otro</mat-option>
         <mat-option value="noEspecificado">No especificado</mat-option>
       </mat-select>
-      <mat-error *ngIf="handleError('apellido', 'required')">
+      <mat-error *ngIf="handleError('sexo', 'required')">
         Elija una opción
       </mat-error>
     </mat-form-field>
@@ -70,13 +70,15 @@
   <div>
     <mat-form-field floatLabel="auto">
       <mat-label>Notas</mat-label>
-      <textarea matInput></textarea>
+      <textarea matInput formControlName="notas"></textarea>
     </mat-form-field>
   </div>
   <mat-card>
     <div class="full-wrapper button-wrapper">
       <div class="button-wrapper">
+
         <button mat-flat-button color="warn">Submit</button>
+
       </div>
     </div>
   </mat-card>

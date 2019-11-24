@@ -10,7 +10,8 @@ import { PersonsListComponent } from './components/persons-list/persons-list.com
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { from } from 'rxjs';
 import { HttpClientModule } from '@angular/common/http';
-import { AgendaService } from './agenda.service'
+import { AgendaService } from './agenda.service';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -28,7 +29,8 @@ import { AgendaService } from './agenda.service'
     AngularMaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule
 
 
   ],
