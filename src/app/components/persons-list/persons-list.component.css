@@ -1,3 +1,48 @@
 table {
   width: 100%;
 }
+
+.mensaje {
+  font-size: medium;
+}
+
+.tabla {
+  width: 100%;
+  /* border: 1px solid black; */
+  padding: 20px;
+  height: 100%;
+  text-align: center;
+}
+
+.headTable {
+  text-decoration: underline;
+  font-size: larger;
+  padding: 30px;
+  font-weight: bolder;
+  color: lightcoral;
+  width: 150px !important;
+}
+
+button {
+  color: white;
+  background-color: lightcoral;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  /* border: 1px solid black; */
+  font-weight: 900;
+  font-family: monospace;
+  margin: 0 25px;
+}
+
+.bodyTable {
+  font-size: 20px;
+  border-right: 1px solid;
+  padding: 15px 10px;
+  min-width: 140px !important;
+  min-height: 50px;
+}
+
+.bodyHeadNumber {
+  border-right: 1px solid black;
+}

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AgendaService } from '../../agenda.service';
 import { Persona } from '../../persona';
+import { MatTableDataSource } from '@angular/material/table';
 
 
 
@@ -13,9 +14,10 @@ import { Persona } from '../../persona';
 export class PersonsListComponent {
   arrayElements: string[];
   getPersonaData: any;
+  dataSource: MatTableDataSource<Persona>
 
   constructor(private router: Router, private agendaServicio: AgendaService) {
-    this.arrayElements = ["NUMERO", "NOMBRE", "APELLIDO", "EDAD", "D.N.I", "FECHA DE NACIMIENTO", "COLOR FAVORITO", "SEXO", "NOTAS"]
+    this.arrayElements = ["NUMERO", "NOMBRE", "APELLIDO", "EDAD", "D.N.I", "F.NACIMIENTO", "COLOR FAVORITO", "SEXO", "NOTAS"]
   }
   getPersona(): Persona[] {
     return this.agendaServicio.getPersonaList()

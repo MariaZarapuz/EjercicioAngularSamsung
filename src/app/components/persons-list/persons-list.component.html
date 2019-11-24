@@ -1,20 +1,26 @@
-<table *ngIf="this.agendaServicio.agenda.length!=0" mdbTable striped="true">
+<div class="title-group">
+  <h1 class="mat-h1">Lista de Personas</h1>
+  <mat-divider fxFlex="1 0"></mat-divider>
+</div>
+
+
+<table class="tabla">
   <thead>
     <tr>
-      <th *ngFor="let head of arrayElements" scope="col">{{head}}</th>
+      <th class="headTable" *ngFor="let head of arrayElements">{{head}}</th>
     </tr>
   </thead>
   <tbody>
-    <tr mdbTableCol *ngFor="let dataPerson of getPersona(); let i = index " id="{{dataPerson.id}}">
-      <th scope="row">{{dataPerson.id + 1}}</th>
-      <td>{{dataPerson.nombre}}</td>
-      <td>{{dataPerson.apellidos}}</td>
-      <td>{{dataPerson.edad}}</td>
-      <td>{{dataPerson.dni}}</td>
-      <td>{{dataPerson.cumple | date:'dd/MM/yyyy'}}</td>
-      <td>{{dataPerson.colorFavorito}}</td>
-      <td>{{dataPerson.sexo}}</td>
-      <td>{{dataPerson.notas}}</td>
+    <tr class="persona" *ngFor="let dataPerson of getPersona(); let i = index " id="{{dataPerson.id}}">
+      <th class="bodyHeadNumber">{{dataPerson.id + 1}}</th>
+      <td class="bodyTable">{{dataPerson.nombre}}</td>
+      <td class="bodyTable">{{dataPerson.apellidos}}</td>
+      <td class="bodyTable">{{dataPerson.edad}}</td>
+      <td class="bodyTable">{{dataPerson.dni}}</td>
+      <td class="bodyTable">{{dataPerson.cumple | date:'dd/MM/yyyy'}}</td>
+      <td class="bodyTable">{{dataPerson.colorFavorito}}</td>
+      <td class="bodyTable">{{dataPerson.sexo}}</td>
+      <td class="bodyTable">{{dataPerson.notas}}</td>
       <td>
         <a routerLink="/edit-person"> <button (click)="editPerson($event)">Modificar</button></a>
       </td>
@@ -28,6 +34,5 @@
   </tbody>
 
 </table>
-<div *ngIf="this.agendaServicio.agenda.length==0">La lista esta vacia.Para añadir una persona pulse <a
-    [routerLink]="['/add-person']">aquí</a>
-</div>
+<!-- <div class="mensaje">La lista esta vacia.Para añadir una persona pulse <a [routerLink]="['/add-person']">aquí</a>
+</div> -->
