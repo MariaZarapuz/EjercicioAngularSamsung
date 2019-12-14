@@ -20,12 +20,12 @@ export class AddPersonComponent implements OnInit {
 
   constructor(private agendaService: AgendaService, public router: Router) {
     this.person = new FormGroup({
-      nombre: new FormControl('', [Validators.required, Validators.minLength(3)]),
-      apellidos: new FormControl('', [Validators.required, Validators.minLength(3)]),
-      edad: new FormControl('', [Validators.required]),
+      nombre: new FormControl('', [Validators.required, Validators.minLength(3), Validators.pattern(/^[\u00F1A-Za-z _]*[\u00F1A-Za-z][\u00F1A-Za-z _]*$/)]),
+      apellidos: new FormControl('', [Validators.required, Validators.minLength(3), Validators.pattern(/^[\u00F1A-Za-z _]*[\u00F1A-Za-z][\u00F1A-Za-z _]*$/)]),
+      edad: new FormControl('', [Validators.required, Validators.min(0), Validators.max(125)]),
       dni: new FormControl('', [Validators.required, Validators.maxLength(9)]),
       cumple: new FormControl('', [Validators.required]),
-      colorFavorito: new FormControl('', [Validators.required, Validators.minLength(3)]),
+      colorFavorito: new FormControl('', [Validators.required, Validators.minLength(3), Validators.pattern(/^[\u00F1A-Za-z _]*[\u00F1A-Za-z][\u00F1A-Za-z _]*$/)]),
       sexo: new FormControl(''),
       notas: new FormControl('')
 
@@ -48,11 +48,13 @@ export class AddPersonComponent implements OnInit {
     }
 
   }
-  ngOnInit() { }
+  ngOnInit() {
+
+  }
+
+  public handleError = (controlName: string, value: string) => {
 
 
-
-  public handleError = (controlName: string, errorName: string) => {
     return this.person.controls[controlName].hasError(errorName);
   }
 
