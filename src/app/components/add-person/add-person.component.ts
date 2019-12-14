@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validators, PatternValidator } from '@angular/forms';
-import { DirectiveNormalizer } from '@angular/compiler';
 import { AgendaService } from '../../agenda.service'
 import { Persona } from 'src/app/persona';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -36,8 +35,16 @@ export class AddPersonComponent implements OnInit {
   onSubmit() {
     if (this.person.valid) {
       this.personGroup = this.person.value;
-      this.agendaService.postData(this.personGroup);
-      this.router.navigate(['persons-list'])
+      this.agendaService.postData(this.personGroup).subscribe(
+        res => {
+          console.log(res, "respuesta de post")
+          this.router.navigate(['persons-list'])
+        },
+        error => {
+          console.log(<any>error);
+        }
+      );
+
     }
 
   }

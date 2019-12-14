@@ -4,15 +4,15 @@
 </div>
 
 
-<table *ngIf="this.agendaServicio.agenda.length != 0" class="tabla">
+<table *ngIf="agenda?.length!=0" class="tabla">
   <thead>
     <tr>
       <th class="headTable" *ngFor="let head of arrayElements">{{head}}</th>
     </tr>
   </thead>
   <tbody>
-    <tr class="persona" *ngFor="let dataPerson of getPersona(); let i = index " id="{{dataPerson.id}}">
-      <th class="bodyHeadNumber">{{dataPerson.id + 1}}</th>
+    <tr class="persona" *ngFor="let dataPerson of agenda; let i = index ">
+
       <td class="bodyTable">{{dataPerson.nombre}}</td>
       <td class="bodyTable">{{dataPerson.apellidos}}</td>
       <td class="bodyTable">{{dataPerson.edad}}</td>
@@ -22,10 +22,10 @@
       <td class="bodyTable">{{dataPerson.sexo}}</td>
       <td class="bodyTable">{{dataPerson.notas}}</td>
       <td>
-        <a routerLink="/edit-person"> <button (click)="editPerson($event)">Modificar</button></a>
+        <a> <button (click)="editPerson(dataPerson._id)">Modificar</button></a>
       </td>
       <td>
-        <a> <button (click)="deletePerson(dataPerson.id)">Borrar</button></a>
+        <a> <button (click)="deletePerson(dataPerson._id)">Borrar</button></a>
       </td>
 
 
@@ -34,6 +34,6 @@
   </tbody>
 
 </table>
-<div *ngIf="this.agendaServicio.agenda.length == 0" class="mensaje">La lista esta vacia. Para añadir una persona pulse
+<div *ngIf="agenda?.length==0" class="mensaje">La lista esta vacia. Para añadir una persona pulse
   <a [routerLink]="['/add-person']">aquí</a>
 </div>

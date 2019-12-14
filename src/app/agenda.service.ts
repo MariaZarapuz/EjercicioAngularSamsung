@@ -1,89 +1,66 @@
 import { Injectable } from '@angular/core';
 import { Persona } from './persona';
 import { Router, ActivatedRoute } from '@angular/router';
-import { element } from 'protractor';
-import { timeout } from 'q';
+import { HttpClient, HttpHeaders } from '@angular/common/http'
+
+import { Observable } from 'rxjs';
+
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class AgendaService {
-  public agenda: Persona[];
+  agenda: {};
   persona: {};
   convertDate: string;
 
+  headers: any;
 
-  constructor(private router: Router) {
-    this.agenda = [];
 
+  constructor(private router: Router, private httpClient: HttpClient) {
+    this.agenda = 0
+    this.headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
   }
 
-  public getPersonaList(): Persona[] {
+  public getPersonaList(): Observable<any> {
 
-    return this.agenda
+    return this.httpClient.get("http://localhost:3000/users", this.headers)
   }
 
-  public postData(data) {
-    this.createPerson(data)
+  public postData(data): Observable<any> {
+
+    return this.httpClient.post("http://localhost:3000/users", data, this.headers);
 
   }
   public getPersonal() {
     this.getPersonaList()
   }
 
-  createPerson(dataPerson) {
 
-    this.agenda.push(new Persona(this.agenda.length, dataPerson.nombre, dataPerson.apellidos, dataPerson.edad, dataPerson.dni, dataPerson.cumple, dataPerson.colorFavorito, dataPerson.sexo, dataPerson.notas));
-  }
   getPersonaId(id) {
-    this.agenda.forEach(element => {
-
-      if (element.id == id) {
-
-        this.persona = element
-      }
-
-    });
+    return this.httpClient.get("http://localhost:3000/users/" + id, this.headers);
   }
   getEdit() {
     return this.persona
   }
+  savePerson(person) {
+    this.persona = person[0]
+    console.log(this.persona)
+  }
+  saveAgenda(agenda) {
+    this.agenda = agenda
+    console.log(this.saveAgenda)
+  }
 
   modificarPersona(id, updatePersona) {
-    this.agenda.forEach(element => {
-
-      if (element.id == id) {
-        element.nombre = updatePersona.nombre
-        element.apellidos = updatePersona.apellidos
-        element.edad = updatePersona.edad
-        element.dni = updatePersona.dni
-        element.cumple = updatePersona.cumple
-        element.colorFavorito = updatePersona.colorFavorito
-        element.sexo = updatePersona.sexo
-        element.notas = updatePersona.notas
-
-      }
-
-    });
+    return this.httpClient.put("http://localhost:3000/users/" + id, updatePersona, this.headers);
   }
 
   deletePersona(id) {
-    this.agenda.forEach(element => {
-      if (element.id == id) {
-        this.agenda.splice(id, 1);
-
-      }
-      for (let index = 0; index < this.agenda.length; index++) {
-        const element = this.agenda[index];
-        element.id = index
-
-      }
-      this.router.navigate(['persons-list'])
-
-    });
-
+    return this.httpClient.delete("http://localhost:3000/users/" + id, this.headers);
   }
+
 
 
 

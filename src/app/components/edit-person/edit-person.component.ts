@@ -22,12 +22,14 @@ export class EditPersonComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (this.agendaServicio.agenda.length == 0) {
+    if (this.agendaServicio.agenda == 0) {
       this.router.navigate(['add-person'])
     } else {
       this.datosPersona = this.agendaServicio.getEdit();
+      console.log(this.datosPersona)
+
       this.editPersona = new FormGroup({
-        id: new FormControl(this.datosPersona['id']),
+
         nombre: new FormControl(this.datosPersona['nombre'], [Validators.required, Validators.minLength(3)]),
         apellidos: new FormControl(this.datosPersona['apellidos'], [Validators.required, Validators.minLength(3)]),
         edad: new FormControl(this.datosPersona['edad'], [Validators.required]),
@@ -37,17 +39,27 @@ export class EditPersonComponent implements OnInit {
         sexo: new FormControl(this.datosPersona['sexo'], [Validators.required]),
         notas: new FormControl(this.datosPersona['notas'])
       });
+
+
+
     }
-
-
   }
 
   upDateSubmit() {
 
     this.updatePersona = this.editPersona.value;
-    let id = this.updatePersona.id;
-    this.agendaServicio.modificarPersona(id, this.updatePersona);
-    this.router.navigate(['persons-list']);
+    console.log(this.updatePersona)
+    let id = this.datosPersona._id;
+    this.agendaServicio.modificarPersona(id, this.updatePersona).subscribe(
+      res => {
+        console.log("ok")
+        this.router.navigate(['persons-list']);
+      },
+      error => {
+        console.log(<any>error)
+      }
+    )
+
 
   }
 
