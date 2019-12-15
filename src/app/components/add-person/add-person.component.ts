@@ -20,12 +20,12 @@ export class AddPersonComponent implements OnInit {
 
   constructor(private agendaService: AgendaService, public router: Router) {
     this.person = new FormGroup({
-      nombre: new FormControl('', [Validators.required, Validators.minLength(3), Validators.pattern(/^[\u00F1A-Za-z _]*[\u00F1A-Za-z][\u00F1A-Za-z _]*$/)]),
-      apellidos: new FormControl('', [Validators.required, Validators.minLength(3), Validators.pattern(/^[\u00F1A-Za-z _]*[\u00F1A-Za-z][\u00F1A-Za-z _]*$/)]),
+      nombre: new FormControl('', [Validators.required, Validators.minLength(3), Validators.pattern(/^[a-zA-ZÀ-ÖØ-öø-ÿ ]+$/)]),
+      apellidos: new FormControl('', [Validators.required, Validators.minLength(3), Validators.pattern(/^[a-zA-ZÀ-ÖØ-öø-ÿ ]+$/)]),
       edad: new FormControl('', [Validators.required, Validators.min(0), Validators.max(125)]),
-      dni: new FormControl('', [Validators.required, Validators.maxLength(9)]),
+      dni: new FormControl('', [Validators.required, Validators.maxLength(9), Validators.minLength(9)]),
       cumple: new FormControl('', [Validators.required]),
-      colorFavorito: new FormControl('', [Validators.required, Validators.minLength(3), Validators.pattern(/^[\u00F1A-Za-z _]*[\u00F1A-Za-z][\u00F1A-Za-z _]*$/)]),
+      colorFavorito: new FormControl('', [Validators.required, Validators.minLength(3), Validators.pattern(/^[a-zA-ZÀ-ÖØ-öø-ÿ ]+$/)]),
       sexo: new FormControl(''),
       notas: new FormControl('')
 
@@ -52,7 +52,7 @@ export class AddPersonComponent implements OnInit {
 
   }
 
-  public handleError = (controlName: string, value: string) => {
+  public handleError = (controlName: string, errorName: string) => {
 
 
     return this.person.controls[controlName].hasError(errorName);

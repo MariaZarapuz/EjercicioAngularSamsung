@@ -6,6 +6,12 @@
       <mat-error *ngIf="handleError('nombre', 'required')">
         El campo <strong>Nombre</strong> esta vacío
       </mat-error>
+      <mat-error *ngIf="handleError('nombre', 'minlength')">
+        El campo <strong>Nombre</strong> debe contener minimo 3 letras.
+      </mat-error>
+      <mat-error *ngIf="handleError('nombre', 'pattern')">
+        El campo <strong>Nombre</strong> no puede contener números.
+      </mat-error>
     </mat-form-field>
   </div>
   <div>
@@ -15,6 +21,12 @@
       <mat-error *ngIf="handleError('apellidos', 'required')">
         El campo <strong>Apellido</strong> esta vacío
       </mat-error>
+      <mat-error *ngIf="handleError('apellidos', 'minlength')">
+        El campo <strong>Apellido</strong> debe contener minimo 3 letras.
+      </mat-error>
+      <mat-error *ngIf="handleError('apellidos', 'pattern')">
+        El campo <strong>Apellido</strong> no puede contener números.
+      </mat-error>
     </mat-form-field>
   </div>
   <mat-form-field floatLabel="auto">
@@ -23,6 +35,9 @@
     <mat-error *ngIf="handleError('edad', 'required')">
       El campo <strong>Edad</strong> esta vacío
     </mat-error>
+    <mat-error *ngIf="handleError('edad', 'max')">
+      El campo <strong>Edad</strong> debe estar comprendida entre 0 y 125
+    </mat-error>
   </mat-form-field>
   <div>
     <mat-form-field floatLabel="auto">
@@ -30,6 +45,9 @@
       <input matInput formControlName="dni" type="text" required>
       <mat-error *ngIf="handleError('dni', 'required')">
         El campo <strong>D.N.I</strong> esta vacío
+      </mat-error>
+      <mat-error>
+        El campo <strong>D.N.I</strong> debe contener 9 caracteres.
       </mat-error>
     </mat-form-field>
   </div>
@@ -50,6 +68,12 @@
       <input matInput formControlName="colorFavorito" type="text" required>
       <mat-error *ngIf="handleError('colorFavorito', 'required')">
         El campo <strong>Color Favorito</strong> esta vacío
+      </mat-error>
+      <mat-error *ngIf="handleError('colorFavorito', 'minlength')">
+        El campo <strong>Color favorito</strong> debe contener minimo 3 letras.
+      </mat-error>
+      <mat-error *ngIf="handleError('colorFavorito', 'pattern')">
+        El campo <strong>Color favorito</strong> no puede contener números.
       </mat-error>
     </mat-form-field>
   </div>

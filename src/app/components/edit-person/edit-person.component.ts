@@ -13,7 +13,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class EditPersonComponent implements OnInit {
   editPersona: FormGroup;
-  datosPersona: {};
+  datosPersona: any;
   updatePersona: Persona;
   convertDate: string;
 
@@ -30,12 +30,12 @@ export class EditPersonComponent implements OnInit {
 
       this.editPersona = new FormGroup({
 
-        nombre: new FormControl(this.datosPersona['nombre'], [Validators.required, Validators.minLength(3)]),
-        apellidos: new FormControl(this.datosPersona['apellidos'], [Validators.required, Validators.minLength(3)]),
-        edad: new FormControl(this.datosPersona['edad'], [Validators.required]),
-        dni: new FormControl(this.datosPersona['dni'], [Validators.required, Validators.maxLength(9)]),
+        nombre: new FormControl(this.datosPersona['nombre'], [Validators.required, Validators.minLength(3), Validators.pattern(/^[a-zA-ZÀ-ÖØ-öø-ÿ ]+$/)]),
+        apellidos: new FormControl(this.datosPersona['apellidos'], [Validators.required, Validators.minLength(3), Validators.pattern(/^[a-zA-ZÀ-ÖØ-öø-ÿ ]+$/)]),
+        edad: new FormControl(this.datosPersona['edad'], [Validators.required, Validators.min(0), Validators.max(125)]),
+        dni: new FormControl(this.datosPersona['dni'], [Validators.required, Validators.maxLength(9), Validators.minLength(9)]),
         cumple: new FormControl(this.datosPersona['cumple'], [Validators.required]),
-        colorFavorito: new FormControl(this.datosPersona['colorFavorito'], [Validators.required, Validators.minLength(3)]),
+        colorFavorito: new FormControl(this.datosPersona['colorFavorito'], [Validators.required, Validators.minLength(3), Validators.pattern(/^[a-zA-ZÀ-ÖØ-öø-ÿ ]+$/)]),
         sexo: new FormControl(this.datosPersona['sexo'], [Validators.required]),
         notas: new FormControl(this.datosPersona['notas'])
       });
